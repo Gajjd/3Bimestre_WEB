@@ -43,6 +43,7 @@ class aluno
     private array $notas = [];
 
     public function __construct($nome, $matricula){
+        $this->nome = $nome;
         $this->nota = $nota;
         $this->matricula = $matricula;
     }
@@ -74,7 +75,8 @@ class aluno
 
 //_____________________________CONTA BANCARIA_____________________________
 
-class contaBancaria{
+class contaBancaria
+{
     public $titular;
     public $saldo;
 
@@ -108,6 +110,34 @@ class contaBancaria{
 
 //_____________________________BIBLIOTECA_____________________________
 
+class biblioteca
+{
+    public $nome;
+    private array $livros = [];
+
+    public function __construct($nome){
+        $this->nome = $nome;
+        $this->livros = [];
+    }
+
+    public function adicionarLivro(string $titulo){
+        $this->livros[] = $titulo;
+    }
+
+    public function buscarLivro(string $termo){
+        $encontrados = [];
+
+        foreach ($this->livros as $livro) {
+            if(stripos($livros, $termo) !== FALSE){
+                $encontrados[] = $livro
+            }
+        }
+    }
+    public function listarLivros(){
+        if
+    }
+
+}
 
 //_____________________________PEDIDO_____________________________
 
