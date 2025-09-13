@@ -15,7 +15,9 @@ class produto
     }
 
     public function aplicarDesconto (float $percentual){
-        $this->preco -= $this->preco * $percentual / 100;  
+        echo "Preço sem desconto: $preco";
+        $this->preco -= $this->preco * $percentual / 100;
+        echo "Preço com desconto de: $percentual%: $preco";
     }
 
     public function vender(int $quantidade){
@@ -50,13 +52,15 @@ class aluno
 
     public function adicionarNota(float $nota) {
         $this->notas[] = $nota;
+        echo "nota: $nota inserida"
     }
 
     public function media (float $media){
         for($x =0; sizeof($this->notas)>$x;$x++){
             $media += sizeof($this->notas[$x]);
         }
-        media/sizeof($this->notas);
+        $media/sizeof($this->notas);
+        echo "Média: $media"
     }
 
     public function aprovado(){
@@ -92,7 +96,7 @@ class contaBancaria
 
     public function sacar(float $valor){
         if($this->saldo >= $valor){
-            $this->saldo =- $valor;
+            $this->saldo -= $valor;
             echo "Você sacou: $valor com sucesso. Saldo atual: $saldo";
         }
         else{
@@ -122,6 +126,7 @@ class biblioteca
 
     public function adicionarLivro(string $titulo){
         $this->livros[] = $titulo;
+        echo "$livro adicionado a lista $livros";
     }
 
     public function buscarLivro(string $termo){
@@ -129,12 +134,23 @@ class biblioteca
 
         foreach ($this->livros as $livro) {
             if(stripos($livros, $termo) !== FALSE){
-                $encontrados[] = $livro
+                $encontrados[] = $livro;
+                echo "Livros com esse termo: $encontrados";
+            }
+            else {
+                echo "Não foi encontrado um livro com o termo: $termo";
             }
         }
     }
     public function listarLivros(){
-        if
+        if (empty($this->livros)) {
+            return "A biblioteca está vazia.";
+        }
+
+        $lista = "-Livros da biblioteca '{$this->nome}':\n";
+        foreach ($this->livros as $i -> $livro) {
+            $lista .= ($i+1) . ". " . $livro . "\n";
+        }
     }
 
 }
