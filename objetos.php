@@ -46,21 +46,21 @@ class aluno
 
     public function __construct($nome, $matricula){
         $this->nome = $nome;
-        $this->nota = $nota;
+        $this->notas = $notas;
         $this->matricula = $matricula;
     }
 
     public function adicionarNota(float $nota) {
         $this->notas[] = $nota;
-        echo "nota: $nota inserida"
+        echo "nota: $nota inserida";
     }
 
-    public function media (float $media){
+    public function media (){
         for($x =0; sizeof($this->notas)>$x;$x++){
             $media += sizeof($this->notas[$x]);
         }
         $media/sizeof($this->notas);
-        echo "Média: $media"
+        echo "Média: $media";
     }
 
     public function aprovado(){
@@ -143,22 +143,85 @@ class biblioteca
         }
     }
     public function listarLivros(){
-        if (empty($this->livros)) {
+        if (sizeof($this->livros)==0) {
             return "A biblioteca está vazia.";
         }
-
-        $lista = "-Livros da biblioteca '{$this->nome}':\n";
-        foreach ($this->livros as $i -> $livro) {
-            $lista .= ($i+1) . ". " . $livro . "\n";
+        else{
+            $lista = "-Livros da biblioteca '{$this->nome}':\n";
+            foreach ($this->livros as $i -> $livro) {
+                $lista .= ($i+1) . ". " . $livro . "\n";
+            }
         }
-    }
 
+    }
 }
 
 //_____________________________PEDIDO_____________________________
 
+class pedido
+{
+    public $cliente;
+    private array $itens = [];
+
+    public function __construct($cliente){
+        $this->cliente = $cliente;
+        $this->itens = [];
+    
+    }
+
+    public function adicionarItem(produto $produto, int $quantidade){
+        $this->itens += ['Produto' => $produto, 'Quantidade' => $quantidade];
+        echo "Produto: $produto adicionado a lista $itens";
+    }
+
+    public function total(){
+        $total = 0;
+        foreach($this->itens as $item){
+          $total += $item['Produto']->preco *$item['Quantidade'];            
+        }
+        echo "Total: $total";
+    }
+    
+    public function detalhes(){
+        foreach($this->)
+        echo "Cliente $this->cliente comprou $this->itens";
+
+    }
+}
 
 //_____________________________TURMA_____________________________
+
+class turma
+{
+    public $disciplina;
+    private array $alunos = [];
+
+    public function __construct($disciplina){
+        $this->disciplina = $disciplina;
+        $this->itens = [];
+    }
+
+    public function adicionarAluno(aluno $aluno){
+        $this->alunos += ['Aluno' => $aluno, 'Media'=> $media];
+        echo "$aluno adicionado a lista $alunos";
+    }
+
+    public function melhorAluno(){
+        aluno $melhor = null;
+        foreach($this->alunos as $aluno){
+            if($aluno->media() > $melhor->media()){
+                $melhor = $aluno;
+            }
+            echo "$melhor->$nome ,A maior média é do aluno $melhor->media";
+        }
+    }
+
+    public function resultadoFinal()
+
+
+
+}
+
 
 
 //_____________________________AGENDA_____________________________
